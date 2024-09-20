@@ -15,6 +15,7 @@ import { http } from 'viem';
 import { sepolia } from 'viem/chains';
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
+import { ReactNode } from "react";
 
 const config = createConfig({
   chains: [sepolia],
@@ -23,6 +24,10 @@ const config = createConfig({
     [sepolia.id]: http(),
   },
 });
+
+interface DynamicWalletProviderProps {
+  children: ReactNode;
+}
 
 export const sidebarCss = `
   @media (min-width: 768px) {
@@ -87,7 +92,7 @@ export const sidebarCss = `
   
 const queryClient = new QueryClient();
   
-export default function App() {
+export const DynamicWalletProvider: React.FC<DynamicWalletProviderProps> = ({ children }) => {
   return (
     <DynamicContextProvider
       settings={{
