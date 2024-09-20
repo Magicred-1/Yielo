@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import DynamicWalletProvider from "@/components/dynamic.provider";
+import DynamicWalletProvider from "@/components/dynamic";
 
 const coolveticaMono = localFont({
   src: "./fonts/Coolvetica.otf",
