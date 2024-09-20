@@ -2,7 +2,6 @@
 
 import {
   DynamicContextProvider,
-  DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import { ZeroDevSmartWalletConnectors } from "@dynamic-labs/ethereum-aa";
@@ -25,9 +24,9 @@ const config = createConfig({
   },
 });
 
-interface DynamicWalletProviderProps {
-  children: ReactNode;
-}
+// interface DynamicWalletProviderProps {
+//   children: ReactNode;
+// }
 
 export const sidebarCss = `
   @media (min-width: 768px) {
@@ -92,6 +91,10 @@ export const sidebarCss = `
   
 const queryClient = new QueryClient();
   
+interface DynamicWalletProviderProps {
+  children: ReactNode;
+}
+
 export const DynamicWalletProvider: React.FC<DynamicWalletProviderProps> = ({ children }) => {
   return (
     <DynamicContextProvider
@@ -108,7 +111,7 @@ export const DynamicWalletProvider: React.FC<DynamicWalletProviderProps> = ({ ch
       <WagmiProvider config={config}>
         <QueryClientProvider client={queryClient}>
           <DynamicWagmiConnector>
-            <DynamicWidget />
+            {children}
           </DynamicWagmiConnector>
         </QueryClientProvider>
       </WagmiProvider> 
