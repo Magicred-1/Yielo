@@ -10,17 +10,17 @@ import {
 } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { http } from 'viem';
-import { arbitrum } from 'viem/chains';
+import { sepolia } from 'viem/chains';
 
 import { useRouter } from 'next/navigation';
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
 const config = createConfig({
-chains: [arbitrum],
+chains: [sepolia],
 multiInjectedProviderDiscovery: false,
 transports: {
-    [arbitrum.id]: http(),
+    [sepolia.id]: http(),
 },
 });
 
@@ -96,8 +96,7 @@ export default function DynamicWalletProvider({ children }: Readonly<{ children:
                 EthereumWalletConnectors,
             ],
             cssOverrides: sidebarCss,
-        }}
-        >
+        }}>
         <WagmiProvider config={config}>
             <QueryClientProvider client={queryClient}>
                 <DynamicWagmiConnector>
