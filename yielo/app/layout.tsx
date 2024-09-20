@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-// import DynamicWalletProvider from "@/components/dynamic.provider";
+import DynamicWalletProvider from "@/components/dynamic.provider";
 
 const coolveticaMono = localFont({
   src: "./fonts/Coolvetica.otf",
@@ -21,13 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <DynamicWalletProvider> */}
-        <body
+              <body
           className={`${coolveticaMono.variable} ${coolveticaMono.variable} antialiased`}
         >
+      <DynamicWalletProvider>
           {children}
-        </body>
-      {/* </DynamicWalletProvider> */}
+      </DynamicWalletProvider>
+      </body>
     </html>
   );
 }
