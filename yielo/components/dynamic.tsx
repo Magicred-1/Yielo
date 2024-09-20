@@ -5,6 +5,7 @@ import {
   DynamicWidget,
 } from "@dynamic-labs/sdk-react-core";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
+import { ZeroDevSmartWalletConnectors } from "@dynamic-labs/ethereum-aa";
 import {
   createConfig,
   WagmiProvider,
@@ -92,7 +93,10 @@ export default function App() {
       settings={{
         // Find your environment id at https://app.dynamic.xyz/dashboard/developer
         environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID || "",
-        walletConnectors: [EthereumWalletConnectors],
+        walletConnectors: [
+          EthereumWalletConnectors,
+          ZeroDevSmartWalletConnectors
+        ],
         cssOverrides: sidebarCss,
       }}
     >
