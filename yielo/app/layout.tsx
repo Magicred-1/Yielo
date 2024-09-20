@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <DynamicWalletProvider>
         <body
-          className={`${coolveticaMono.variable} ${geistMono.variable} antialiased`}
+          className={`${coolveticaMono.variable} ${coolveticaMono.variable} antialiased`}
         >
           {children}
         </body>

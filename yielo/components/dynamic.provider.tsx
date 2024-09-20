@@ -1,31 +1,35 @@
 "use client";
 
-import {
-    DynamicContextProvider
-} from "@dynamic-labs/sdk-react-core";
+import { DynamicContextProvider } from "@dynamic-labs/sdk-react-core";
 import { DynamicWagmiConnector } from "@dynamic-labs/wagmi-connector";
 import {
     createConfig,
     WagmiProvider,
+    configureChains,
 } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { http } from 'viem';
 import { sepolia } from 'viem/chains';
-
+import { publicProvider } from 'wagmi/providers/public'; // Added public provider
 import { useRouter } from 'next/navigation';
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 
+// Configure the chain and the provider (http in this case)
+const { chains, provider } = configureChains(
+    [sepolia], // Add your desired chains
+    [http(), publicProvider()] // Use HTTP provider with fallback to public provider
+);
+
+// Create wagmi config
 const config = createConfig({
-chains: [sepolia],
-multiInjectedProviderDiscovery: false,
-transports: {
-    [sepolia.id]: http(),
-},
+    autoConnect: true,
+    provider,
 });
 
 const queryClient = new QueryClient();
 
+// CSS overrides for sidebar styling
 export const sidebarCss = `
   @media (min-width: 768px) {
     .accordion-item {
@@ -87,23 +91,24 @@ export const sidebarCss = `
   }
 `
 
+// Main wallet provider component
 export default function DynamicWalletProvider({ children }: Readonly<{ children: React.ReactNode }>) {
     return (
         <DynamicContextProvider
-        settings={{
-            environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID ?? "",
-            walletConnectors: [
-                EthereumWalletConnectors,
-            ],
-            cssOverrides: sidebarCss,
+            settings={{
+                environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID ?? "",
+                walletConnectors: [
+                    EthereumWalletConnectors,
+                ],
+                cssOverrides: sidebarCss,
         }}>
-        <WagmiProvider config={config}>
-            <QueryClientProvider client={queryClient}>
-                <DynamicWagmiConnector>
-                    {children}
-                </DynamicWagmiConnector>
-            </QueryClientProvider>
-        </WagmiProvider> 
+            <WagmiProvider config={config}>
+                <QueryClientProvider client={queryClient}>
+                    <DynamicWagmiConnector>
+                        {children}
+                    </DynamicWagmiConnector>
+                </QueryClientProvider>
+            </WagmiProvider> 
         </DynamicContextProvider>
     );
 };
