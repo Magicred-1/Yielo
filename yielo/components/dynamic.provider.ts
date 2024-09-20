@@ -88,25 +88,23 @@ export const sidebarCss = `
 `
 
 export default function DynamicWalletProvider({ children }: Readonly<{ children: React.ReactNode }>) {
-    const router = useRouter();
-return (
-    <DynamicContextProvider
-    
-    settings={{
-        environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID ?? "",
-        walletConnectors: [
-            EthereumWalletConnectors,
-        ],
-        cssOverrides: sidebarCss,
-    }}
-    >
-    <WagmiProvider config={config}>
-        <QueryClientProvider client={queryClient}>
-            <DynamicWagmiConnector>
-                {children}
-            </DynamicWagmiConnector>
-        </QueryClientProvider>
-    </WagmiProvider> 
-    </DynamicContextProvider>
-);
+    return (
+        <DynamicContextProvider
+        settings={{
+            environmentId: process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID ?? "",
+            walletConnectors: [
+                EthereumWalletConnectors,
+            ],
+            cssOverrides: sidebarCss,
+        }}
+        >
+        <WagmiProvider config={config}>
+            <QueryClientProvider client={queryClient}>
+                <DynamicWagmiConnector>
+                    {children}
+                </DynamicWagmiConnector>
+            </QueryClientProvider>
+        </WagmiProvider> 
+        </DynamicContextProvider>
+    );
 };
