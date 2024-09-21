@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
 
@@ -14,10 +16,10 @@ export default function Footer() {
         transition-all ease-in-out duration-200">
 
             <div className={`flex flex-col items-center justify-center cursor-pointer
-            ${pathname =="/page"?"text-yielopurple":"text-white"}`}
-            onClick={()=>{router.push("/page")}}>
+            ${pathname =="/profile"?"text-yielopurple":"text-white"}`}
+            onClick={()=>{router.push("/profile")}}>
 
-                <Image alt="" width="30" height="30" src={`${pathname == "/page" ? "/icon-home-p.svg" : "/icon-home.svg"}`}></Image>
+                <Image alt="" width="30" height="30" src={`${pathname == "/profile" ? "/icon-home-p.svg" : "/icon-home.svg"}`}></Image>
                 Home
 
             </div>
