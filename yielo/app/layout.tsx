@@ -8,6 +8,9 @@ import { lexend } from "./utils/const";
 export const metadata: Metadata = {
   title: "Yielo",
   description: "DeFi Yield made easy",
+  icons: {
+    icon: "/icon-yielo-mini-logo.png",
+  },
 };
 
 export default function RootLayout({

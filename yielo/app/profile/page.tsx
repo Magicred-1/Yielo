@@ -1,6 +1,5 @@
 "use client";
 
-import { Camembert } from "@/components/charts/camembert";
 import { UserHistory } from "@/components/history/userHistory";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import { useState, useEffect } from "react";
@@ -11,7 +10,7 @@ import { useFunding } from "@dynamic-labs/sdk-react-core";
 export default function Profile() {
     const { user } = useDynamicContext();
     const [currency, setCurrency] = useState("EUR");
-    const [balanceEUR, setBalanceEUR] = useState(100); // Balance in EUR
+    const [balanceEUR] = useState(100); // Balance in EUR
     const [conversionRateETH, setConversionRateETH] = useState(0); // Assume 1 ETH = 2800 EUR (so 1 EUR = 0.035 ETH)
     console.log("conversionRateETH", fetchETHPrice());
 
@@ -48,8 +47,8 @@ export default function Profile() {
                     {currency === "EUR" ? `${balanceEUR} €` : `${balanceETH.toFixed(4)} ETH`}
                 </h1>
                 {enabled && (
-                    <button className="bg-yielopurple/50 text-white p-1.5 ml-1 rounded-full shadow-md hover:bg-violet-700 transition-transform transform hover:scale-105"
-                        onClick={openFunding}
+                    <button className="bg-violet-600 text-white p-3 rounded-full shadow-md hover:bg-violet-700 transition-transform transform hover:scale-105"
+                        onClick={openFunding as any}
                     >
                         <div className="flex items-center">
                             <Plus className="w-4 h-4" />
