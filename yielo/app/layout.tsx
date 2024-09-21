@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${coolveticaMono.variable} antialiased`}>
+      <body className={`${coolveticaMono.className} antialiased`}>
         <DynamicWalletProvider>
           {children}
         </DynamicWalletProvider>
