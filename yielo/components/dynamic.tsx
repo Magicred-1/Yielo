@@ -1,4 +1,4 @@
-// https://docs.dynamic.xyz/sdks/react-sdk/objects/userprofile for more information on the UserProfile object
+
 
 "use client";
 
