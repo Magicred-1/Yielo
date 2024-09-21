@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { DynamicWalletProvider } from "@/components/dynamic";
+import Footer from "@/components/footer";
 
 import { lexend } from "./utils/const";
 
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${lexend.className} antialiased`}>
+        <Footer/>
         <DynamicWalletProvider>
           {children}
         </DynamicWalletProvider>
