@@ -31,7 +31,7 @@ export default function Home() {
         </p>
 
         {/* Dynamic Widget with bounce animation on the button */}
-        <div className="bg-white/10 rounded-lg p-4 shadow-lg">
+        <div className="bg-white/10 p-4">
           <DynamicWidget 
             innerButtonComponent={
               <span className="">
