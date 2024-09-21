@@ -1,13 +1,22 @@
+"use client";
+
 import Image from "next/image";
 import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
+import { useAccount } from "wagmi";
 
 export default function Home() {
+  const { isConnected } = useAccount();
+  if (isConnected) {
+    // Redirect to the dashboard if the user is already connected
+    return window.location.replace("/profile");
+  }
+
   return (
     <div className="w-full h-screen flex flex-col items-center justify-center px-4 bg-gradient-to-b from-violet-800 to-indigo-900">
 
       {/* Logo Section with fade-in animation */}
       <Image 
-        src="/yielo_logo.svg" 
+        src="/yielo_logo.svg"
         alt="Yielo Logo" 
         width="284" 
         height="132" 
@@ -25,10 +34,10 @@ export default function Home() {
         <div className="bg-white/10 rounded-lg p-4 shadow-lg">
           <DynamicWidget 
             innerButtonComponent={
-              <span className="px-6 py-3 text-white bg-violet-600 hover:bg-violet-700 rounded-full font-semibold animate-bounce hover:animate-none">
+              <span className="">
                 Get Started
               </span>
-            } 
+            }
           />
         </div>
       </div>
