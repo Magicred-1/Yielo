@@ -13,7 +13,6 @@ export default function Deposit() {
             </div>
 
             <div className="z-10 mt-44 h-full bg-white box-border border-solid border-white rounded-xl">
-
             </div>
         </div>
     );

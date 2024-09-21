@@ -4,10 +4,9 @@ import { Camembert } from "@/components/charts/camembert";
 import { UserHistory } from "@/components/history/userHistory";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 import { useState, useEffect } from "react";
-import { ArrowLeftRight } from "lucide-react";
+import { ArrowLeftRight, Plus } from "lucide-react";
 import { fetchETHPrice } from "@/components/server/fetchETHPrice";
-
-
+import { useFunding } from "@dynamic-labs/sdk-react-core";
 
 export default function Profile() {
     const { user } = useDynamicContext();
@@ -15,6 +14,8 @@ export default function Profile() {
     const [balanceEUR, setBalanceEUR] = useState(100); // Balance in EUR
     const [conversionRateETH, setConversionRateETH] = useState(0); // Assume 1 ETH = 2800 EUR (so 1 EUR = 0.035 ETH)
     console.log("conversionRateETH", fetchETHPrice());
+
+    const { enabled, openFunding } = useFunding();
 
     useEffect(() => {
         fetchETHPrice().then((price) => {
@@ -46,6 +47,16 @@ export default function Profile() {
                 <h1 className="text-6xl font-bold text-center">
                     {currency === "EUR" ? `${balanceEUR} €` : `${balanceETH.toFixed(4)} ETH`}
                 </h1>
+                {enabled && (
+                    <button className="bg-violet-600 text-white p-3 rounded-full shadow-md hover:bg-violet-700 transition-transform transform hover:scale-105"
+                        onClick={openFunding}
+                    >
+                        <div className="flex items-center">
+                            <Plus className="w-6 h-6" />
+                            <span className="ml-2">Deposit</span>
+                        </div>
+                    </button>
+                )}
             </div>
             {/* Currency Switch Button */}
             <button 

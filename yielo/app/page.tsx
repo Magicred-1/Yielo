@@ -5,8 +5,8 @@ import { DynamicWidget } from "@dynamic-labs/sdk-react-core";
 import { useAccount } from "wagmi";
 
 export default function Home() {
-  const { isConnected } = useAccount();
-  if (isConnected) {
+  const { isConnected, address } = useAccount();
+  if (isConnected && address) {
     // Redirect to the dashboard if the user is already connected
     return window.location.replace("/profile");
   }
