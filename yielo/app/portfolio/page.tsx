@@ -1,5 +1,6 @@
 "use client";
 
+import { Camembert } from "@/components/charts/camembert";
 import { useDynamicContext } from "@dynamic-labs/sdk-react-core";
 
 export default function Portfolio() {
@@ -13,7 +14,9 @@ export default function Portfolio() {
             </div>
 
             <div className="z-10 mt-44 h-full bg-white box-border border-solid border-white rounded-xl">
-
+                <div className="flex flex-col items-center justify-center">
+                    <Camembert />
+                </div>
             </div>
         </div>
     );

@@ -44,14 +44,15 @@ export default function Profile() {
             <div className="w-full fixed flex flex-col items-center justify-center mx-auto bg-gradient-to-b from-violet-800">
 
                 {/* Card-like Balance Display */}
-                <div className="mt-32 pb-3 rounded-2xl flex items-center justify-between text-center">
-                    {/* Balance Text */}
-                    <h1 className="text-5xl font-bold text-center">
-                        {currency === "EUR" ? `${balanceEUR} €` : `${balanceETH.toFixed(4)} ETH`}
-                    </h1>
-                    {enabled && (
-                        <button className="bg-violet-600 text-white p-3 rounded-full shadow-md hover:bg-violet-700 transition-transform transform hover:scale-105"
-                            onClick={openFunding as any}
+                {/* Card-like Balance Display */}
+            <div className="mt-32 pb-3 rounded-2xl flex items-center justify-between text-center">
+                {/* Balance Text */}
+                <h1 className="text-5xl font-bold text-center">
+                    {currency === "EUR" ? `${balanceEUR} €` : `${balanceETH.toFixed(4)} ETH`}
+                </h1>
+                {enabled && (
+                    <button className="bg-yielopurple/50 text-white p-1.5 ml-1 rounded-full shadow-md hover:bg-violet-700 transition-transform transform hover:scale-105"
+                        onClick={openFunding as any}
                         >
                             <div className="flex items-center">
                                 <Plus className="w-4 h-4" />
