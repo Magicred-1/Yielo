@@ -30,15 +30,17 @@ export default function Home() {
           Your gateway to the next-gen platform. Sign in to get started!
         </p>
 
-        {/* Dynamic Widget with bounce animation on the button */}
-        <div className="bg-white/10 p-4">
-          <DynamicWidget 
-            innerButtonComponent={
-              <span className="">
-                Get Started
-              </span>
-            }
-          />
+        {/* Centered Dynamic Widget with no shadow */}
+        <div className="flex justify-center">
+          <div className="p-4 flex justify-center items-center">
+            <DynamicWidget 
+              innerButtonComponent={
+                <span className="text-white">
+                  Get Started
+                </span>
+              }
+            />
+          </div>
         </div>
       </div>
     </div>
