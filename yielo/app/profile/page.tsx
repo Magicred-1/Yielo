@@ -47,7 +47,7 @@ export default function Profile() {
                     {currency === "EUR" ? `${balanceEUR} €` : `${balanceETH.toFixed(4)} ETH`}
                 </h1>
                 {enabled && (
-                    <button className="bg-violet-600 text-white p-3 rounded-full shadow-md hover:bg-violet-700 transition-transform transform hover:scale-105"
+                    <button className="bg-yielopurple/50 text-white p-1.5 ml-1 rounded-full shadow-md hover:bg-violet-700 transition-transform transform hover:scale-105"
                         onClick={openFunding as any}
                     >
                         <div className="flex items-center">
