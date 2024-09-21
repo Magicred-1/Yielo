@@ -31,29 +31,28 @@ export default function Profile() {
     };
 
     return (
-        <div className="h-screen w-screen bg-gradient-to-b from-violet-800 flex flex-col">
+        <div className="h-full w-screen flex flex-col">
 
-            <div className="pl-8 pt-10 text-4xl font-bold">
+            <div className="fixed pl-8 pt-6 text-4xl font-bold">
                 <span className="text-yielopurple">Hello,</span><br/>
                 {user?.firstName} 👋
             </div>
 
         {/* Balance Display */}
-        <div className="flex flex-col items-center justify-center mt-20">
+        <div className="w-full fixed flex flex-col items-center justify-center mx-auto bg-gradient-to-b from-violet-800">
 
             {/* Card-like Balance Display */}
-            <div className="p-6 rounded-2xl flex items-center justify-between text-center">
+            <div className="mt-32 pb-3 rounded-2xl flex items-center justify-between text-center">
                 {/* Balance Text */}
-                <h1 className="text-6xl font-bold text-center">
+                <h1 className="text-5xl font-bold text-center">
                     {currency === "EUR" ? `${balanceEUR} €` : `${balanceETH.toFixed(4)} ETH`}
                 </h1>
                 {enabled && (
-                    <button className="bg-violet-600 text-white p-3 rounded-full shadow-md hover:bg-violet-700 transition-transform transform hover:scale-105"
+                    <button className="bg-yielopurple/50 text-white p-1.5 ml-1 rounded-full shadow-md hover:bg-violet-700 transition-transform transform hover:scale-105"
                         onClick={openFunding}
                     >
                         <div className="flex items-center">
-                            <Plus className="w-6 h-6" />
-                            <span className="ml-2">Deposit</span>
+                            <Plus className="w-4 h-4" />
                         </div>
                     </button>
                 )}
@@ -64,20 +63,21 @@ export default function Profile() {
                     onClick={toggleCurrency}
                     aria-label="Switch Currency"
                 >
-                    <ArrowLeftRight className="w-6 h-6" />
+                    <ArrowLeftRight className="w-4 h-4" />
                 </button>
 
         </div>
 
 
-            <div className="z-10 mt-32 h-full bg-white box-border border-solid border-white rounded-xl">
+            <div className="z-10 mt-72 h-full bg-white box-border border-solid border-white rounded-xl">
                 {/* Grid 2 columns */}
-                <div className="gap-4 p-8">
+                <div className="gap-4 p-6">
                     <div className="rounded-xl shadow-lg p-4">
                         <h1 className="text-xl font-bold text-black">Your History</h1>
                         <UserHistory />
                     </div>
                 </div>
+                <div className="h-10"></div>
             </div>
         </div>
     );
