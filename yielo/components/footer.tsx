@@ -25,15 +25,6 @@ export default function Footer() {
             </div>
 
             <div className={`flex flex-col items-center justify-center cursor-pointer
-            ${pathname =="/deposit"?"text-yielopurple":"text-white"}`}
-            onClick={()=>{router.push("/deposit")}}>
-
-                <Image alt="" width="30" height="30" src={`${pathname == "/deposit" ? "/icon-plus-p.svg" : "/icon-plus.svg"}`}></Image>
-                Deposit
-
-            </div>
-
-            <div className={`flex flex-col items-center justify-center cursor-pointer
             ${pathname =="/portfolio"?"text-yielopurple":"text-white"}`}
             onClick={()=>{router.push("/portfolio")}}>
 
