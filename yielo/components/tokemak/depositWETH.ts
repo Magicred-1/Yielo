@@ -2,10 +2,10 @@ import { useWriteContract, useReadContract } from "wagmi";
 import { parseUnits } from "viem";
 import { depositAbi } from "./abi";
 
-export const useDepositWETH = (amount: string) => {
+export const depositWETH = (amount: string) => {
     const { writeContract } = useWriteContract();
 
-    const depositWETH = async () => {
+    const useDepositWETH = async () => {
         try {
             writeContract({ 
                 abi: depositAbi,
@@ -19,7 +19,7 @@ export const useDepositWETH = (amount: string) => {
         }
     };
 
-    const getBalance = async (address: `0x${string}`) => {
+    const useGetBalance = async (address: `0x${string}`) => {
         try {
             const balance = useReadContract({
                 abi: depositAbi,
@@ -35,5 +35,5 @@ export const useDepositWETH = (amount: string) => {
     }
 
 
-    return { depositWETH, getBalance };
+    return { useDepositWETH, useGetBalance };
 };
