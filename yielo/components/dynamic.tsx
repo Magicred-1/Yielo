@@ -1,3 +1,5 @@
+// https://docs.dynamic.xyz/sdks/react-sdk/objects/userprofile for more information on the UserProfile object
+
 "use client";
 
 import {
@@ -15,6 +17,7 @@ import { sepolia } from 'viem/chains';
 
 import { EthereumWalletConnectors } from "@dynamic-labs/ethereum";
 import { ReactNode } from "react";
+import { useRouter } from 'next/navigation';
 
 const config = createConfig({
   chains: [sepolia],
@@ -23,10 +26,6 @@ const config = createConfig({
     [sepolia.id]: http(),
   },
 });
-
-// interface DynamicWalletProviderProps {
-//   children: ReactNode;
-// }
 
 export const sidebarCss = `
   @media (min-width: 768px) {
@@ -96,6 +95,7 @@ interface DynamicWalletProviderProps {
 }
 
 export const DynamicWalletProvider: React.FC<DynamicWalletProviderProps> = ({ children }) => {
+  const router = useRouter();
   return (
     <DynamicContextProvider
       settings={{
@@ -105,6 +105,11 @@ export const DynamicWalletProvider: React.FC<DynamicWalletProviderProps> = ({ ch
           EthereumWalletConnectors,
           ZeroDevSmartWalletConnectors
         ],
+        events: {
+          onAuthSuccess: () => {
+            router.push("/profile");
+          }
+        },
         cssOverrides: sidebarCss,
       }}
     >
