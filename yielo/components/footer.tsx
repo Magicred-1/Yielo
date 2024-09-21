@@ -11,7 +11,7 @@ export default function Footer() {
     return(
         <div className="w-full z-20 fixed bottom-0 h-16 bg-violet-950 
         text-yielopurple text-xs
-        flex flex-row justify-evenly
+        flex flex-row justify-around
         mx-auto
         transition-all ease-in-out duration-200">
 
