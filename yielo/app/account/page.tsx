@@ -83,7 +83,7 @@ export default function Account() {
 
                     <button className="bg-transparent rounded-lg 
                     text-red-500 text-lg px-2 py-1.5"
-                    onClick={()=> (window.location.href = 'https://google.com')}>
+                    onClick={()=> (window.location.href = 'https://yielo.xyz')}>
                         Log out
                     </button>
 
