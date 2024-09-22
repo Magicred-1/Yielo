@@ -35,7 +35,7 @@ export default function Profile() {
     return (
         <div className="h-full w-screen flex flex-col">
 
-            <div className="fixed pl-8 pt-6 text-4xl font-bold">
+            <div className="fixed z-10 opacity-75 pl-8 pt-6 text-4xl font-bold">
                 <span className="text-yielopurple">Hello,</span><br/>
                 {user?.firstName} 👋
             </div>
@@ -45,7 +45,7 @@ export default function Profile() {
 
                 {/* Card-like Balance Display */}
                 {/* Card-like Balance Display */}
-            <div className="mt-32 pb-3 rounded-2xl flex items-center justify-between text-center">
+            <div className="mt-36 pb-3 rounded-2xl flex items-center justify-between text-center">
                 {/* Balance Text */}
                 <h1 className="text-5xl font-bold text-center">
                     {currency === "EUR" ? `${balanceEUR} €` : `${balanceETH.toFixed(4)} ETH`}
