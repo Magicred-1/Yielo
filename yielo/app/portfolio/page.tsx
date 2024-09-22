@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { ArrowLeftRight, X } from "lucide-react";
 import { fetchETHPrice } from "@/components/server/fetchETHPrice";
 import { Camembert } from "@/components/charts/camembert";
+import { useDepositWETH } from "@/components/tokemak/depositWETH";
 
 export default function Portfolio() {
   const [balanceEUR] = useState(256.83);
@@ -14,12 +15,17 @@ export default function Portfolio() {
   const [investmentAmount, setInvestmentAmount] = useState("");
   const [collectAmount, setCollectAmount] = useState("");
 
+  // Get the deposit function from the hook
+  const { useDeposit } = useDepositWETH();
+
   useEffect(() => {
-    fetchETHPrice().then((price) => {
-      setConversionRateETH(price);
-    }).catch((error) => {
-      console.error("Error fetching ETH price:", error);
-    });
+    fetchETHPrice()
+      .then((price) => {
+        setConversionRateETH(price);
+      })
+      .catch((error) => {
+        console.error("Error fetching ETH price:", error);
+      });
   }, []);
 
   const balanceETH = conversionRateETH > 0 ? balanceEUR / conversionRateETH : 0;
@@ -46,14 +52,17 @@ export default function Portfolio() {
     setCollectAmount("");
   };
 
-  const handleConfirmInvest = () => {
-    // Implement investment logic here
-    console.log(`Invested: ${investmentAmount} EUR`);
+  const handleConfirmInvest = async () => {
+    try {
+      console.log(`Invested: ${investmentAmount} EUR`);
+      await useDeposit(investmentAmount);  // Wait for the deposit transaction to complete
+    } catch (error) {
+      console.error("Error during investment:", error);
+    }
     closeModal();
   };
 
   const handleConfirmCollect = () => {
-    // Implement investment logic here
     console.log(`Collected: ${collectAmount} EUR`);
     closeModalCollect();
   };
@@ -75,19 +84,19 @@ export default function Portfolio() {
           </button>
         </div>
         <div className="w-full flex flex-row justify-evenly">
-
-          <button className="box-border border-solid bg-violet-800 text-xl text-white font-medium px-7 py-3 rounded-md"
-          onClick={handleCollect}>
+          <button
+            className="box-border border-solid bg-violet-800 text-xl text-white font-medium px-7 py-3 rounded-md"
+            onClick={handleCollect}
+          >
             Collect
           </button>
 
-          <button 
+          <button
             className="box-border border-solid bg-yielopurple text-xl text-white font-medium px-7 py-3 rounded-md"
             onClick={handleInvest}
           >
             Invest
           </button>
-
         </div>
       </div>
       <div className="z-10 mt-[50vh] h-full bg-white box-border border-solid border-white rounded-xl">
@@ -113,7 +122,7 @@ export default function Portfolio() {
               placeholder="Amount in €"
               className="w-full p-2 border border-gray-300 rounded mb-4 text-black/50"
             />
-           
+
             <button
               onClick={handleConfirmInvest}
               className="w-full bg-yielopurple text-white p-2 rounded hover:bg-violet-700"
@@ -124,7 +133,7 @@ export default function Portfolio() {
         </div>
       )}
 
-    {showModalCollect && (
+      {showModalCollect && (
         <div className="fixed z-30 inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg w-80">
             <div className="flex justify-between items-center mb-4">
@@ -140,7 +149,7 @@ export default function Portfolio() {
               placeholder="Amount in €"
               className="w-full p-2 border border-gray-300 rounded mb-4 text-black/50"
             />
-           
+
             <button
               onClick={handleConfirmCollect}
               className="w-full bg-yielopurple text-white p-2 rounded hover:bg-violet-700"
@@ -150,8 +159,6 @@ export default function Portfolio() {
           </div>
         </div>
       )}
-
-
     </div>
   );
 }
