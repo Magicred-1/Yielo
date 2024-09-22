@@ -26,7 +26,7 @@ export default function Account() {
 
 
    
-            <div className="w-full fixed flex flex-col items-center justify-center mx-auto bg-gradient-to-b from-violet-800">
+            <div className="w-full fixed flex flex-col items-center justify-center mx-auto bg-gradient-to-b from-violet-800 to-black">
 
             
             <div className="mt-24 pb-3 rounded-2xl flex flex-col items-center text-center">
@@ -86,6 +86,8 @@ export default function Account() {
                     onClick={()=> (window.location.href = 'https://yielo.xyz')}>
                         Log out
                     </button>
+
+                    <div className="h-5"></div>
 
                 </div>
                 <div className="h-10"></div>

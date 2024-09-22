@@ -42,7 +42,7 @@ export default function Withdraw() {
 
 
    
-            <div className="w-full h-full fixed flex flex-col items-center mx-auto bg-gradient-to-b from-violet-800">
+            <div className="w-full h-full fixed flex flex-col items-center mx-auto bg-gradient-to-b from-violet-800 to-black">
 
 
                 <div className="mt-32">Balance</div>

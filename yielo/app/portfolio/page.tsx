@@ -60,7 +60,7 @@ export default function Portfolio() {
 
   return (
     <div className="h-full w-screen flex flex-col">
-      <div className="w-full fixed flex flex-col items-center justify-center mx-auto bg-gradient-to-b from-violet-800">
+      <div className="w-full fixed flex flex-col items-center justify-center mx-auto bg-gradient-to-b from-violet-800 to-black">
         <div className="mt-24 pb-3 rounded-2xl flex flex-col gap-4 items-center text-center">
           Piggy Bank Account
           <h1 className="text-5xl font-bold text-center">

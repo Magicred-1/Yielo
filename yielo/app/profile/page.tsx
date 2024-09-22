@@ -41,7 +41,7 @@ export default function Profile() {
             </div>
 
             {/* Balance Display */}
-            <div className="w-full fixed flex flex-col items-center justify-center mx-auto bg-gradient-to-b from-violet-800">
+            <div className="w-full fixed flex flex-col items-center justify-center mx-auto bg-gradient-to-b from-violet-800 to-black">
 
                 {/* Card-like Balance Display */}
                 {/* Card-like Balance Display */}
