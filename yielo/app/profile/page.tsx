@@ -12,7 +12,7 @@ import { useFunding } from "@dynamic-labs/sdk-react-core";
 export default function Profile() {
     const { user } = useDynamicContext();
     const [currency, setCurrency] = useState("EUR");
-    const [balanceEUR] = useState(100); // Balance in EUR
+    const [balanceEUR] = useState(112); // Balance in EUR
     const [conversionRateETH, setConversionRateETH] = useState(0); // Assume initial value of 0 ETH
     const { enabled, openFunding } = useFunding();
 
